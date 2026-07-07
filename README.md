@@ -20,7 +20,7 @@ Make sure you have the following installed:
 
 ```bash
 # 1. Clone or navigate to the project folder
-cd "c:\Study\CV + resume\ToDoApp"
+cd "ToDoApp"
 
 # 2. Install dependencies
 npm install
@@ -40,6 +40,28 @@ npm run build
 # Preview the production build locally
 npm run preview
 ```
+
+---
+
+## 🐳 Running with Docker
+
+Make sure [Docker](https://www.docker.com/) is installed, then:
+
+```bash
+# Build and start the container
+docker compose up --build
+```
+
+Then open your browser at **[http://localhost:3000](http://localhost:3000)**
+
+```bash
+# Stop the container
+docker compose down
+```
+
+The image is built in two stages:
+1. **Builder** — Node 20 Alpine installs dependencies and runs `npm run build`
+2. **Runner** — Node 20 Alpine with `serve` serves the static `dist/` folder on port `3000`
 
 ---
 
@@ -101,6 +123,7 @@ src/
 | Styling | [Tailwind CSS v4](https://tailwindcss.com/) |
 | Storage | Browser `localStorage` |
 | Notifications | [Web Notifications API](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API) |
+| Container | [Docker](https://www.docker.com/) + `serve` |
 
 ---
 
