@@ -1,147 +1,147 @@
-# ✅ My Tasks — To-Do App
+# ✅ My Tasks — Ứng dụng To-Do
 
-A clean, feature-rich To-Do list app built with **Vite + React + TypeScript + Tailwind CSS v4**.
-All data is persisted in your browser's `localStorage` — no backend required.
+Ứng dụng quản lý công việc gọn gàng, đầy đủ tính năng, xây dựng với **Vite + React + TypeScript + Tailwind CSS v4**.
+Toàn bộ dữ liệu được lưu trữ trong `localStorage` của trình duyệt — không cần backend.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Bắt đầu
 
-### Prerequisites
+### Yêu cầu
 
-Make sure you have the following installed:
+Đảm bảo bạn đã cài đặt các công cụ sau:
 
-| Tool | Version |
-|------|---------|
-| [Node.js](https://nodejs.org/) | v18 or higher |
-| npm | v9 or higher (comes with Node.js) |
+| Công cụ | Phiên bản |
+|---------|-----------|
+| [Node.js](https://nodejs.org/) | v18 trở lên |
+| npm | v9 trở lên (đi kèm với Node.js) |
 
-### Install & Run
+### Cài đặt & Chạy
 
 ```bash
-# 1. Clone or navigate to the project folder
-cd "ToDoApp"
+# 1. Clone repo và di chuyển vào thư mục dự án
+git clone https://github.com/Tnhaan20/todoapp.git && cd todoapp
 
-# 2. Install dependencies
+# 2. Cài đặt các gói phụ thuộc
 npm install
 
-# 3. Start the development server
+# 3. Khởi động server phát triển
 npm run dev
 ```
 
-Then open your browser at **[http://localhost:5173](http://localhost:5173)**
+Sau đó mở trình duyệt tại **[http://localhost:5173](http://localhost:5173)**
 
-### Build for Production
+### Build cho Production
 
 ```bash
-# Compile and bundle for production
+# Biên dịch và đóng gói cho production
 npm run build
 
-# Preview the production build locally
+# Xem trước bản build production ở local
 npm run preview
 ```
 
 ---
 
-## 🐳 Running with Docker
+## 🐳 Chạy với Docker
 
-Make sure [Docker](https://www.docker.com/) is installed, then:
+Đảm bảo đã cài [Docker](https://www.docker.com/), sau đó:
 
 ```bash
-# Build and start the container
+# Build và khởi động container
 docker compose up --build
 ```
 
-Then open your browser at **[http://localhost:3000](http://localhost:3000)**
+Sau đó mở trình duyệt tại **[http://localhost:3000](http://localhost:3000)**
 
 ```bash
-# Stop the container
+# Dừng container
 docker compose down
 ```
 
-The image is built in two stages:
-1. **Builder** — Node 20 Alpine installs dependencies and runs `npm run build`
-2. **Runner** — Node 20 Alpine with `serve` serves the static `dist/` folder on port `3000`
+Image được build theo 2 giai đoạn:
+1. **Builder** — Node 20 Alpine cài dependencies và chạy `npm run build`
+2. **Runner** — Node 20 Alpine dùng `serve` để phục vụ thư mục `dist/` trên cổng `3000`
 
 ---
 
-## ✨ Features
+## ✨ Tính năng
 
-| Feature | Details |
-|---------|---------|
-| **Add tasks** | Title (required) + notes/description (optional) |
-| **Edit tasks** | Inline edit — title, content, priority, deadline |
-| **Delete tasks** | With confirmation dialog to prevent accidents |
-| **Complete tasks** | Toggle done/undone; completed tasks cannot be edited |
-| **Priority levels** | None / Medium / High — color-coded badges |
-| **Deadlines** | Set a deadline per task; badges show Overdue / Due soon / Upcoming |
-| **Deadline alarm** | In-app toast + browser notification when a deadline is reached |
-| **Filter** | View All / Active / Completed tasks |
-| **Persistence** | All tasks auto-saved to `localStorage` |
-| **Live status** | Deadline badges refresh every minute automatically |
+| Tính năng | Chi tiết |
+|-----------|----------|
+| **Thêm công việc** | Tiêu đề (bắt buộc) + ghi chú/mô tả (tùy chọn) |
+| **Chỉnh sửa công việc** | Chỉnh sửa trực tiếp — tiêu đề, nội dung, độ ưu tiên, deadline |
+| **Xóa công việc** | Có hộp thoại xác nhận để tránh xóa nhầm |
+| **Hoàn thành công việc** | Bật/tắt hoàn thành; công việc đã hoàn thành không thể chỉnh sửa |
+| **Mức độ ưu tiên** | Không có / Trung bình / Cao — hiển thị badge màu sắc |
+| **Deadline** | Đặt deadline cho từng công việc; badge hiển thị Quá hạn / Sắp đến hạn / Còn thời gian |
+| **Cảnh báo deadline** | Toast trong app + thông báo trình duyệt khi đến hạn |
+| **Lọc** | Xem Tất cả / Đang làm / Đã hoàn thành |
+| **Lưu trữ** | Tất cả công việc tự động lưu vào `localStorage` |
+| **Cập nhật trực tiếp** | Badge deadline tự động làm mới mỗi phút |
 
 ---
 
-## 🗂️ Project Structure
+## 🗂️ Cấu trúc dự án
 
 ```
 src/
 ├── types/
-│   └── task.ts                  # Task interface & shared types (Priority, FilterType, etc.)
+│   └── task.ts                  # Interface Task & các kiểu dùng chung (Priority, FilterType, ...)
 │
 ├── utils/
 │   ├── date.ts                  # now(), formatDate(), formatDeadline(), getDeadlineStatus()
 │   └── storage.ts               # loadFromStorage(), saveToStorage(), schema migration
 │
 ├── hooks/
-│   ├── useTasks.ts              # Core CRUD logic + localStorage persistence
-│   ├── useToast.ts              # Toast queue (add / auto-dismiss / remove)
-│   └── useDeadlineAlarm.ts      # Deadline polling + browser notification
+│   ├── useTasks.ts              # Logic CRUD chính + lưu trữ localStorage
+│   ├── useToast.ts              # Hàng đợi Toast (thêm / tự ẩn / xóa)
+│   └── useDeadlineAlarm.ts      # Polling deadline + thông báo trình duyệt
 │
 ├── components/
-│   ├── TaskInput/               # Add-task form (title, content, deadline, priority)
-│   ├── FilterTabs/              # All / Active / Completed filter buttons
-│   ├── TaskList/                # Renders the task list or empty state
-│   ├── TaskItem/                # Individual task card (view + inline edit)
-│   ├── ConfirmDialog/           # Reusable confirmation modal
-│   └── Toast/                   # Slide-in toast notification + container
+│   ├── TaskInput/               # Form thêm công việc (tiêu đề, nội dung, deadline, độ ưu tiên)
+│   ├── FilterTabs/              # Nút lọc Tất cả / Đang làm / Đã hoàn thành
+│   ├── TaskList/                # Hiển thị danh sách công việc hoặc trạng thái rỗng
+│   ├── TaskItem/                # Card công việc (xem + chỉnh sửa trực tiếp)
+│   ├── ConfirmDialog/           # Modal xác nhận có thể tái sử dụng
+│   └── Toast/                   # Toast thông báo slide-in + container
 │
-├── App.tsx                      # Root — wires all hooks and components together
-├── main.tsx                     # React entry point
+├── App.tsx                      # Root — kết nối tất cả hooks và components
+├── main.tsx                     # Điểm vào React
 └── index.css                    # Tailwind v4 import + custom keyframes
 ```
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Công nghệ sử dụng
 
-| Layer | Technology |
-|-------|-----------|
+| Tầng | Công nghệ |
+|------|-----------|
 | Framework | [React 19](https://react.dev/) |
 | Build tool | [Vite 8](https://vite.dev/) |
-| Language | TypeScript |
-| Styling | [Tailwind CSS v4](https://tailwindcss.com/) |
-| Storage | Browser `localStorage` |
-| Notifications | [Web Notifications API](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API) |
+| Ngôn ngữ | TypeScript |
+| Giao diện | [Tailwind CSS v4](https://tailwindcss.com/) |
+| Lưu trữ | `localStorage` của trình duyệt |
+| Thông báo | [Web Notifications API](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API) |
 | Container | [Docker](https://www.docker.com/) + `serve` |
 
 ---
 
-## 📦 Available Scripts
+## 📦 Các lệnh có sẵn
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server at `localhost:5173` |
-| `npm run build` | Build optimised production bundle to `dist/` |
-| `npm run preview` | Serve the production build locally |
-| `npm run lint` | Run ESLint |
+| Lệnh | Mô tả |
+|------|-------|
+| `npm run dev` | Khởi động server phát triển tại `localhost:5173` |
+| `npm run build` | Build bundle production tối ưu vào `dist/` |
+| `npm run preview` | Chạy thử bản build production ở local |
+| `npm run lint` | Chạy ESLint |
 
 ---
 
-## 🔔 Deadline Alarm Notes
+## 🔔 Lưu ý về Cảnh báo Deadline
 
-- The app will **request browser notification permission** on first load.
-- Deadlines are checked **every 30 seconds** in the background.
-- When a task deadline is reached, you'll see an **in-app toast** and a **browser notification**.
-- Each task only alarms **once per session**. If you edit the deadline, the alarm resets automatically.
-- Notifications also appear even if you're on a different browser tab.
+- App sẽ **yêu cầu quyền thông báo trình duyệt** lần đầu tải trang.
+- Deadline được kiểm tra **mỗi 30 giây** trong nền.
+- Khi deadline của một công việc đến, bạn sẽ thấy **toast trong app** và **thông báo trình duyệt**.
+- Mỗi công việc chỉ cảnh báo **một lần mỗi phiên**. Nếu bạn chỉnh sửa deadline, cảnh báo sẽ tự reset.
+- Thông báo vẫn xuất hiện ngay cả khi bạn đang ở tab trình duyệt khác.
